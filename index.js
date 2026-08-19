@@ -6,8 +6,22 @@ const { getCoinPrice, getTrendingCoins, getGlobalMarket } = require('./services/
 
 const bot = new Bot(process.env.BOT_TOKEN);
 
-// Connect DB
-connectDB();
+// Global Error Handler for grammY
+bot.catch((err) => {
+  console.error('Error in bot middleware:', err);
+});
+
+async function startApp() {
+  try {
+    // Wait for MongoDB connection BEFORE starting the bot
+    await connectDB();
+    
+    bot.start();
+    console.log("🚀 CryptoPulse Bot is running...");
+  } catch (error) {
+    console.error("Failed to start application:", error);
+  }
+}
 
 // Map common symbols to CoinGecko IDs
 const SYMBOL_MAP = {
@@ -19,9 +33,13 @@ const SYMBOL_MAP = {
   xrp: 'ripple'
 };
 
-// /start command with Referral System support
+// Command handlers...
 bot.command('start', async (ctx) => {
-  const telegramId = ctx.from.id;
+  // ... your start logic
+});
+
+// Launch the app
+startApp();
   const username = ctx.from.username || ctx.from.first_name;
   const startParam = ctx.match; // captures referral payload (e.g. t.me/bot?start=12345)
 
