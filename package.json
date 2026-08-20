@@ -1,29 +1,15 @@
 {
   "name": "cryptopulse-bot",
   "version": "1.0.0",
-  "description": "Telegram crypto bot for live prices, alerts, portfolio tracking, and market updates",
+  "description": "Telegram CryptoPulse Bot",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node index.js"
   },
-  "keywords": [
-    "telegram",
-    "bot",
-    "crypto",
-    "coingecko",
-    "alerts",
-    "portfolio"
-  ],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "axios": "^1.7.0",
     "dotenv": "^16.4.5",
-    "grammy": "^1.28.0",
-    "mongoose": "^8.5.0"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.0"
+    "mongoose": "^8.3.0",
+    "node-telegram-bot-api": "^0.66.0"
   }
 }
